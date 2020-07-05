@@ -50,10 +50,15 @@ a {
     max-width: 500px;
     padding: 20px;
     margin-bottom: 40px;
+    margin-right: 40px;
     background-color: var(--color-secondary);
     border-radius: 15px;
     box-shadow: 0 1px 3px rgba(197, 194, 194, 0.6);
     color: var(--color-title);
+}
+
+.note:last-child {
+    margin-right: 0;
 }
 
 .note header h2 {
