@@ -33,11 +33,15 @@ function createNote(e) {
     document.getElementById('formAddNotes').reset()
 }
 
+// Funcion para agregar nota al DOM
 function noteView() {
     let notesStorage = JSON.parse(localStorage.getItem('notes'))
     let notesContainer = document.getElementById('notes')
+    let listContainer = document.getElementById('editNote')
+    let listDeleteContainer = document.getElementById('deleteNote')
 
     notesContainer.innerHTML = ''
+    listContainer.innerHTML = ''
 
     for (let i = 0; i < notesStorage.length; i++){
         let title = notesStorage[i].titleNote
@@ -49,10 +53,13 @@ function noteView() {
                                             <div>
                                                 <p>${text}</p>
                                             </div>
-                                        </article>`        
+                                        </article>`
+        listContainer.innerHTML += `<option value="${i}">${title}</option>`
+        listDeleteContainer.innerHTML += `<option value="${i}">${title}</option>`
     }
 }
 
+// Comprobamos si localstorage contiene algo
 if (localStorage.getItem('notes') != null) {
     noteView()
 }
