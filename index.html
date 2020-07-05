@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>App Para agregar notas</title>
+</head>
+<body>
+
+    <main class="container">
+        <section class="notes">
+
+            <article class="note">
+                <header>
+                    <h2>Titulo de la nota</h2>
+                </header>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta cum delectus voluptatem placeat ab vitae, nisi sed quisquam aliquid pariatur, eos accusamus laboriosam doloremque voluptates dolores animi aperiam odit quo.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="controls">
+            <div class="addNotes">
+                <h3>Agrega Una Nota</h3>
+                <form id="formAddNotes">
+                    <input type="text" name="addTitleNote" id="addTitleNote" placeholder="Escribe un titulo">
+                    <textarea name="addTextNote" id="addTextNote" cols="35" rows="5" placeholder="Escriba su nota"></textarea>
+                    <a href="#" id="btnAddNote" class="btn">Agregar</a>
+                </form>
+            </div>
+
+            <div class="editNotes">
+                <h3>Edita Una Nota</h3>
+                <form id="formEditNotes">
+                    <select name="editNote" id="editNote">
+                        <option value="op1">Opción 1</option>
+                    </select>
+                    <a href="#" id="btnEditNote" class="btn">Editar</a>
+                </form>
+            </div>
+
+            <div class="deleteNotes">
+                <h3>Borra Una Nota</h3>
+                <form id="formDeleteNotes">
+                    <select name="deleteNote" id="editNote">
+                        <option value="op1">Opción 1</option>
+                    </select>
+                    <a href="#" id="btnDeleteNote" class="btn">Eliminar</a>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <script src="app.js"></script>
+</body>
+</html>
