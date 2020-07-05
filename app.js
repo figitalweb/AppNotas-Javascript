@@ -6,6 +6,9 @@ let btnAddNote = document.getElementById('btnAddNote'),
 //Evento para crear la nota
 btnAddNote.addEventListener('click', createNote)
 
+// Evento actualizar nota
+btnEditNote.addEventListener('click', editNote)
+
 //Funcion para crear un article con sus clases y contenido
 function createNote(e) {
     e.preventDefault();    
@@ -33,7 +36,7 @@ function createNote(e) {
     document.getElementById('formAddNotes').reset()
 }
 
-// Funcion para agregar nota al DOM
+// Funcion para agregar nota al DOM, y agregar elementos option para editar y eliminar
 function noteView() {
     let notesStorage = JSON.parse(localStorage.getItem('notes'))
     let notesContainer = document.getElementById('notes')
@@ -57,6 +60,26 @@ function noteView() {
         listContainer.innerHTML += `<option value="${i}">${title}</option>`
         listDeleteContainer.innerHTML += `<option value="${i}">${title}</option>`
     }
+}
+
+//Función para editar notas
+function editNote() {
+    let notesStorage = JSON.parse(localStorage.getItem('notes'))
+    // console.log('opciones:', optionsEdit)
+    // console.log('opciones Local:', notesStorage[0].titleNote)
+    
+    for (let i = 0; i < notesStorage.length; i++){
+        let optionsEdit = document.getElementById('editNote').selectedOptions[0].text
+        if (optionsEdit === notesStorage[i].titleNote) {
+            let title = prompt('Nuevo titulo'),
+                text = prompt('Nuevo Texto')
+            localStorage.setItem('notes', JSON.stringify()) // ver forma de modificar la nota
+            notesStorage[i].titleNote = title
+            notesStorage[i].textNote = text
+        } 
+
+    }
+
 }
 
 // Comprobamos si localstorage contiene algo
