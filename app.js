@@ -6,8 +6,11 @@ let btnAddNote = document.getElementById('btnAddNote'),
 //Evento para crear la nota
 btnAddNote.addEventListener('click', createNote)
 
-// Evento actualizar nota
+// Evento para actualizar nota
 btnEditNote.addEventListener('click', editNote)
+
+// Evento para borrar nota
+btnDeleteNote.addEventListener('click', deleteNote)
 
 //Funcion para crear un article con sus clases y contenido
 function createNote(e) {
@@ -45,6 +48,7 @@ function noteView() {
 
     notesContainer.innerHTML = ''
     listContainer.innerHTML = ''
+    listDeleteContainer.innerHTML = ''
 
     for (let i = 0; i < notesStorage.length; i++){
         let title = notesStorage[i].titleNote
@@ -85,6 +89,22 @@ function editNote() {
 
     noteView()
 
+}
+
+//Funcion para borrar notas
+function deleteNote() {
+    let indexSelect = document.getElementById('deleteNote').selectedOptions[0].value //guardamos indice
+    let notesIndexStorage = JSON.parse(localStorage.getItem('notes'))[indexSelect] //con el indice seleccionamos la nota
+    let notesGetStorage = JSON.parse(localStorage.getItem('notes')) //obtenemos todas las notas
+    let optionsDelete = document.getElementById('deleteNote').selectedOptions[0].text //obtenemos la seleccion del usuario 
+
+
+    if (notesIndexStorage.titleNote == optionsDelete) {
+        notesGetStorage.splice(indexSelect, 1) // Eliminamos la nota
+        localStorage.setItem('notes', JSON.stringify(notesGetStorage))
+    }
+
+    noteView()
 }
 
 // Comprobamos si localstorage contiene algo
