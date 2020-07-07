@@ -2,6 +2,7 @@
 let btnAddNote = document.getElementById('btnAddNote'),
     btnEditNote = document.getElementById('btnEditNote'),
     btnDeleteNote = document.getElementById('btnDeleteNote');
+    btnClearNote = document.getElementById('btnClearNote');
 
 //Evento para crear la nota
 btnAddNote.addEventListener('click', createNote)
@@ -11,6 +12,9 @@ btnEditNote.addEventListener('click', editNote)
 
 // Evento para borrar nota
 btnDeleteNote.addEventListener('click', deleteNote)
+
+// Evento para Limpiar LocalStorage
+btnClearNote.addEventListener('click', clearNote)
 
 //Funcion para crear un article con sus clases y contenido
 function createNote(e) {
@@ -104,6 +108,13 @@ function deleteNote() {
         localStorage.setItem('notes', JSON.stringify(notesGetStorage))
     }
 
+    noteView()
+}
+
+//Funcion para Limpiar Localstorage
+function clearNote() {
+    localStorage.clear();
+    
     noteView()
 }
 
