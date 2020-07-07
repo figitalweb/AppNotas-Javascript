@@ -64,21 +64,26 @@ function noteView() {
 
 //Función para editar notas
 function editNote() {
-    let notesStorage = JSON.parse(localStorage.getItem('notes'))
-    // console.log('opciones:', optionsEdit)
-    // console.log('opciones Local:', notesStorage[0].titleNote)
-    
-    for (let i = 0; i < notesStorage.length; i++){
-        let optionsEdit = document.getElementById('editNote').selectedOptions[0].text
-        if (optionsEdit === notesStorage[i].titleNote) {
-            let title = prompt('Nuevo titulo'),
-                text = prompt('Nuevo Texto')
-            localStorage.setItem('notes', JSON.stringify()) // ver forma de modificar la nota
-            notesStorage[i].titleNote = title
-            notesStorage[i].textNote = text
-        } 
+    let indexSelect = document.getElementById('editNote').selectedOptions[0].value //guardamos indice
+    let notesIndexStorage = JSON.parse(localStorage.getItem('notes'))[indexSelect] //con el indice seleccionamos la nota
+    let notesGetStorage = JSON.parse(localStorage.getItem('notes')) //obtenemos todas las notas
+    let optionsEdit = document.getElementById('editNote').selectedOptions[0].text //obtenemos la seleccion del usuario 
 
+
+    if (notesIndexStorage.titleNote == optionsEdit) {
+        let titleNote = prompt('Nuevo titulo')
+        let textNote = prompt('Nuevo texto')
+        
+        notesUpStorage = {
+            titleNote,
+            textNote
+        }
+
+        notesGetStorage.splice(indexSelect, 1, notesUpStorage) // reemplazamos por los nuevos valores
+        localStorage.setItem('notes', JSON.stringify(notesGetStorage))
     }
+
+    noteView()
 
 }
 
