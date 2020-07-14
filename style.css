@@ -1,3 +1,6 @@
+/*=============================================
+=            Estilos Generales y Variables    =
+=============================================*/
 :root {
     --color-primary: #28394e;
     --color-secondary: #db8a91;
@@ -33,6 +36,10 @@ a {
     color: var(--color-secondary);
 }
 
+
+/*=============================================
+=            Main Container                   =
+=============================================*/
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -47,6 +54,9 @@ a {
 }
 
 
+/*=============================================
+=            Container Notes                  =
+=============================================*/
 .note {
     max-width: 500px;
     padding: 20px;
@@ -56,6 +66,8 @@ a {
     border-radius: 15px;
     box-shadow: 0 1px 3px rgba(197, 194, 194, 0.6);
     color: var(--color-title);
+    animation-duration: 1s;
+    animation-name: opacityIn;
 }
 
 .note:last-child {
@@ -66,6 +78,18 @@ a {
     margin-bottom: 10px;
 }
 
+@keyframes opacityIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+/*=============================================
+=            Container Controls            =
+=============================================*/
 .controls {
     background-color: var(--color-title);
     min-height: 200px;

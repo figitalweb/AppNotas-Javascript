@@ -118,7 +118,7 @@ function clearNote() {
     noteView()
 }
 
-// Comprobamos si localstorage contiene algo
+// Comprobamos si localstorage contiene algo y luego mostramos las notas
 if (localStorage.getItem('notes') != null) {
     noteView()
 }
