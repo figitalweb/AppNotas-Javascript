@@ -20,7 +20,7 @@ a {
 }
 
 .btn {
-    padding: 10px 30px;
+    padding: 15px 30px;
     background-color: var(--color-secondary);
     border-radius: 5px;
     color: var(--color-primary);
@@ -86,4 +86,12 @@ a {
 
 .controls > div form > * {
     margin-bottom: 10px;
+    border: 0;
+    padding: 5px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.controls .addNotes form textarea {
+    font-family: sans-serif;
 }
