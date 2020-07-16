@@ -18,29 +18,35 @@ btnClearNote.addEventListener('click', clearNote)
 
 //Funcion para crear un article con sus clases y contenido
 function createNote(e) {
-    e.preventDefault();    
-    let titleNote = document.getElementById('addTitleNote').value,
-        textNote = document.getElementById('addTextNote').value;
+    e.preventDefault();
+    let titleNote = document.getElementById('addTitleNote').value.trim(),
+        textNote = document.getElementById('addTextNote').value.trim();
     
-    let notes = {
-        titleNote,
-        textNote
-    }
-
-    if (localStorage.getItem('notes') === null) {
-        let notesStorage = []
-        notesStorage.push(notes)
-        localStorage.setItem('notes', JSON.stringify(notesStorage))
+    if (titleNote != '' && titleNote != null && textNote != '' && textNote != null) {
         
-    } else {
-        let notesStorage = JSON.parse(localStorage.getItem('notes'))
-        notesStorage.push(notes)
-        localStorage.setItem('notes', JSON.stringify(notesStorage))
-    }
-    
-    noteView()
+        let notes = {
+            titleNote,
+            textNote
+        }
 
-    document.getElementById('formAddNotes').reset()
+        if (localStorage.getItem('notes') === null) {
+            let notesStorage = []
+            notesStorage.push(notes)
+            localStorage.setItem('notes', JSON.stringify(notesStorage))
+
+        } else {
+            let notesStorage = JSON.parse(localStorage.getItem('notes'))
+            notesStorage.push(notes)
+            localStorage.setItem('notes', JSON.stringify(notesStorage))
+        }
+
+        noteView()
+
+        document.getElementById('formAddNotes').reset()
+    } else {
+        alert('Debes ingresar datos reales')
+    }
+
 }
 
 // Funcion para agregar nota al DOM, y agregar elementos option para editar y eliminar
@@ -113,9 +119,9 @@ function deleteNote() {
 
 //Funcion para Limpiar Localstorage
 function clearNote() {
-    localStorage.clear();
+    localStorage.clear()
     
-    noteView()
+    location.reload(true)
 }
 
 // Comprobamos si localstorage contiene algo y luego mostramos las notas
